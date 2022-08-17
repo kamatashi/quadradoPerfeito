@@ -22,6 +22,13 @@ const divisaoInteiro = (numero, divisor, ind = 1) => {
   else if (numero == ind) return 
 }
 
+const ehInteiro = numero => divisor => {
+  if (numero == 0) return 0
+  else if (numero == 1) return 1
+  else if (numero == divisor) return 1
+  else if (numero < divisor) return 'O divisor é maior que o numerador. O resultado não seria um número inteiro.'
+  else return ehInteiro(numero)(divisor + 1)
+}
 
 const nezima_raiz_Indece = (numero, indice) => {
 	if (numero == 1) return 1
@@ -32,14 +39,16 @@ const nezima_raiz_Indece = (numero, indice) => {
 
 
 // Função final
-const nesima_raizq = (numero) => {
+const nesima_raizq = numero => {
 	if (numero == 1) return 1
+  if (numero < 0) return 'Por favor, insira um número inteiro positivo!'
+  if (ehInteiro(numero)(2) != 1) return 'Por favor, insira um número inteiro!'
   else return multiplicacao(numero, numero)
 }
 
 
 
 
-const resultado = nesima_raizq(9)
+const resultado = nesima_raizq(54)
 
 console.log(resultado)
